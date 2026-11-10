@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura de Docker</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header class="header-bar">
+        <div class="logo">
+            <img src="assets/docker_icon.png" alt="Icono de Docker">
+            <h2>Docker y contenedores</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="fundamentos.html">Fundamentos</a></li>
+                <li><a href="arquitectura.html" class="activo">Arquitectura</a></li>
+                <li><a href="herramientas.html">Herramientas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!--Portada-->
+        <section class="hero">
+            <h1>Arquitectura de Docker</h1>
+            <p>
+                Docker utiliza una arquitectura cliente-servidor. Las instrucciones del usuario
+                son enviadas por un cliente al servicio encargado de administrar los recursos de
+                Docker. Esta organización permite construir imágenes, ejecutar contenedores y
+                gestionar redes y volúmenes desde una terminal o desde otras aplicaciones.
+            </p>
+        </section>
+
+        <!--2.1 Modelo cliente-servidor-->
+        <section class="panel">
+            <h2>Modelo cliente-servidor</h2>
+            <p>
+                La arquitectura está formada principalmente por Docker Client, Docker Daemon y
+                Docker Engine API. Además, utiliza registros (registries) para almacenar y
+                distribuir imágenes.
+            </p>
+
+            <div class="tabla">
+                <table>
+                    <caption>Componentes del modelo cliente-servidor</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Componente</th>
+                            <th scope="col">Función</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Docker Client</td>
+                            <td>Interfaz con la que el usuario envía instrucciones, normalmente mediante el comando <code>docker</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>Docker Daemon (<code>dockerd</code>)</td>
+                            <td>Servicio que recibe solicitudes y administra imágenes, contenedores, redes y volúmenes.</td>
+                        </tr>
+                        <tr>
+                            <td>Docker Engine API</td>
+                            <td>Interfaz mediante la cual el cliente y otras aplicaciones se comunican con el daemon.</td>
+                        </tr>
+                        <tr>
+                            <td>Docker Registry</td>
+                            <td>Servicio que almacena imágenes para descargarlas o publicarlas. Docker Hub es un registro público muy utilizado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="destacado">
+                Importante: el cliente y el daemon pueden ejecutarse en el mismo equipo o
+                comunicarse de forma remota. Esto permite administrar un daemon ubicado en otro
+                sistema.
+            </p>
+
+            <figure class="espacio-imagen">
+
+                <img src="assets/arquitectura.png" alt="Arquitectura cliente-servidor de Docker">
+                
+                <figcaption>Arquitectura cliente-servidor de Docker</figcaption>
+            </figure>
+        </section>
+
+        <!--2.2 Componentes principales-->
+        <section>
+            <h2>Componentes principales</h2>
+
+            <div class="grid-tarjetas">
+                <article class="tarjeta">
+                    <h4>Docker Client</h4>
+                    <p>
+                        Es el medio principal de interacción con Docker. Cuando el usuario escribe
+                        una instrucción, como <code>docker run</code>, el cliente envía la
+                        solicitud al daemon mediante la API. El cliente no realiza por sí solo
+                        todas las tareas de creación y ejecución; solicita al daemon que las lleve
+                        a cabo.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <h4>Docker Daemon</h4>
+                    <p>
+                        El daemon, identificado normalmente como <code>dockerd</code>, permanece
+                        en ejecución esperando solicitudes. Se encarga de construir imágenes,
+                        crear y administrar contenedores, configurar redes y gestionar volúmenes.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <h4>Docker Engine API</h4>
+                    <p>
+                        Es una API de tipo REST que establece cómo los programas pueden enviar
+                        instrucciones al daemon. La CLI de Docker utiliza esta API, pero otras
+                        aplicaciones también pueden utilizarla para automatizar operaciones.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <h4>Docker Registry</h4>
+                    <p>
+                        Es un servicio donde se almacenan imágenes de Docker. Cuando una imagen no
+                        está disponible localmente, Docker puede descargarla desde un registro.
+                        También permite publicar imágenes propias para compartirlas con otros
+                        equipos o entornos.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!--2.3 ¿Cómo funciona una operación?-->
+        <section class="panel">
+            <h2>¿Cómo funciona una operación de Docker?</h2>
+            <p>
+                Al ejecutar un comando para iniciar un contenedor, se produce una secuencia de
+                comunicación entre los componentes:
+            </p>
+
+            <ol>
+                <li>El usuario escribe una instrucción en Docker Client, por ejemplo: <code>docker run nginx</code>.</li>
+                <li>El cliente envía la solicitud al Docker Daemon mediante la Docker Engine API.</li>
+                <li>El daemon comprueba si la imagen solicitada está disponible localmente.</li>
+                <li>Si la imagen no está disponible, el daemon puede descargarla desde un registro, como Docker Hub.</li>
+                <li>Con la imagen disponible, el daemon crea y pone en ejecución el contenedor.</li>
+                <li>El resultado de la operación se comunica al cliente, que muestra información al usuario.</li>
+            </ol>
+
+            <p class="destacado">
+                Ejemplo: al ejecutar <code>docker run nginx</code>, Docker busca la imagen
+                nginx, la descarga si hace falta y crea un contenedor para ejecutar el servidor
+                web.
+            </p>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/nginx.png" alt="Secuencia de una operación docker run nginx">
+                
+                <figcaption>Secuencia de una operación (<code>docker run nginx</code>)</figcaption>
+            </figure>
+        </section>
+
+        <!--2.4 Flujo general de trabajo-->
+        <section class="oscuro">
+            <h2>Flujo general de trabajo</h2>
+
+            <div class="tabla">
+                <table>
+                    <caption>Etapas del flujo de trabajo de Docker</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Etapa</th>
+                            <th scope="col">Qué sucede</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Construcción</td>
+                            <td>Se prepara un Dockerfile y se construye una imagen con <code>docker build</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>Almacenamiento</td>
+                            <td>La imagen queda disponible localmente o se publica en un registro con <code>docker push</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>Descarga</td>
+                            <td>Otro equipo puede obtenerla desde un registro mediante <code>docker pull</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>Ejecución</td>
+                            <td>Se crea un contenedor a partir de la imagen mediante <code>docker run</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>Administración</td>
+                            <td>Se consultan, detienen, reinician o eliminan contenedores según sea necesario.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                <a class="btn" href="herramientas.html">Continuar: Herramientas de Docker</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="pie-pag">
+        <div class="pie-presentacion">
+            <div class="pie-logos">
+                <span class="marca">
+                    <img src="assets/utp.png" alt="Logo Universidad Tecnológica de Panamá">
+                </span>
+                <span class="marca">
+                    <img src="assets/facu.png" alt="Logo Facultad de Ingeniería de Sistemas Computacionales">
+                </span>
+            </div>
+
+            <div class="pie-ficha">
+                <p>Universidad Tecnológica de Panamá</p>
+                <p>Facultad de Ingeniería de Sistemas Computacionales</p>
+                <p>Desarrollo y Gestión de Software</p>
+                <p>Parcial #3</p><br>
+                <p>Pertenece a:</p>
+                <p>Erick Castillo</p><br>
+                <p>Grupo:</p>
+                <p>1GS121</p><br>
+                <p>Fecha de entrega:</p>
+                <p>09 de noviembre de 2026</p><br>
+                <p>|| Semestre</p>
+            </div>
+
+            <p class="pie-nota">Docker y contenedores</p>
+        </div>
+    </footer>
+
+</body>
+</html>
