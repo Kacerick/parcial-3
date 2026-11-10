@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de Docker</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header class="header-bar">
+        <div class="logo">
+            <img src="assets/docker_icon.png" alt="Icono de Docker">
+            <h2>Docker y contenedores</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="fundamentos.html">Fundamentos</a></li>
+                <li><a href="arquitectura.html">Arquitectura</a></li>
+                <li><a href="herramientas.html" class="activo">Herramientas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!--Portada-->
+        <section class="hero">
+            <h1>Herramientas de Docker</h1>
+            <p>
+                Docker cuenta con herramientas que facilitan el desarrollo, la ejecución y la
+                administración de aplicaciones en contenedores. Algunas permiten trabajar
+                mediante comandos, mientras que otras ofrecen interfaces gráficas o ayudan a
+                coordinar varios servicios.
+            </p>
+        </section>
+
+        <!--3.1 Docker CLI-->
+        <section class="panel">
+            <h2>Docker CLI (línea de comandos)</h2>
+            <p>
+                Docker CLI es la interfaz de línea de comandos que permite interactuar con Docker
+                mediante instrucciones escritas en una terminal. A través de ella se pueden
+                construir imágenes, iniciar contenedores, consultar su estado y administrar
+                recursos.
+            </p>
+
+            <div class="tabla">
+                <table>
+                    <caption>Comandos más utilizados de Docker CLI</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Comando</th>
+                            <th scope="col">Función</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>docker build -t nombre .</code></td>
+                            <td>Construye una imagen a partir de un Dockerfile.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker images</code></td>
+                            <td>Muestra las imágenes disponibles localmente.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker pull imagen</code></td>
+                            <td>Descarga una imagen desde un registro.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker run imagen</code></td>
+                            <td>Crea e inicia un contenedor a partir de una imagen.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker ps</code></td>
+                            <td>Muestra los contenedores que están en ejecución.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker ps -a</code></td>
+                            <td>Muestra todos los contenedores, incluidos los detenidos.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker stop contenedor</code></td>
+                            <td>Detiene un contenedor en ejecución.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker start contenedor</code></td>
+                            <td>Inicia un contenedor detenido.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker logs contenedor</code></td>
+                            <td>Muestra los registros generados por un contenedor.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker rm contenedor</code></td>
+                            <td>Elimina un contenedor detenido.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker rmi imagen</code></td>
+                            <td>Elimina una imagen local.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="destacado">
+                Nota: los comandos utilizan nombres genéricos. En la terminal, se debe reemplazar
+                <code>imagen</code> o <code>contenedor</code> por el nombre o identificador
+                correspondiente.
+            </p>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/docker-cmd.png" alt="Terminal con comandos de Docker CLI">
+                
+                <figcaption>Terminal con comandos de Docker CLI</figcaption>
+            </figure>
+        </section>
+
+        <!--3.2 Docker Compose-->
+        <section>
+            <h2>Docker Compose</h2>
+            <p>
+                Docker Compose es una herramienta para definir y ejecutar aplicaciones formadas
+                por varios contenedores. En lugar de configurar cada contenedor mediante
+                comandos independientes, permite describir los servicios de una aplicación en un
+                archivo YAML, normalmente llamado <code>compose.yaml</code> o
+                <code>compose.yml</code>.
+            </p>
+            <p>En ese archivo se pueden definir, entre otros elementos:</p>
+            <ul>
+                <li><strong>Servicios:</strong> componentes de la aplicación, como backend, frontend o base de datos.</li>
+                <li><strong>Imágenes o instrucciones de construcción:</strong> indican qué imagen utilizar o cómo construirla.</li>
+                <li><strong>Puertos:</strong> establecen qué puertos se publican para acceder a los servicios.</li>
+                <li><strong>Volúmenes:</strong> permiten conservar información y compartir archivos.</li>
+                <li><strong>Redes:</strong> establecen la comunicación entre los servicios.</li>
+            </ul>
+            <p>
+                Una vez definida la configuración, el comando <code>docker compose up</code>
+                permite crear e iniciar los servicios descritos. También se pueden consultar sus
+                registros, detenerlos o eliminarlos mediante otros comandos de Compose.
+            </p>
+
+            <p class="destacado">
+                Ejemplo de uso: una aplicación puede utilizar un contenedor para el backend y
+                otro para MySQL. Compose permite definir ambos servicios y su comunicación en un
+                solo archivo.
+            </p>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/compose.png" alt="Ejemplo de archivo compose.yaml">
+                
+                <figcaption>Ejemplo de archivo <code>compose.yaml</code></figcaption>
+            </figure>
+        </section>
+
+        <!--3.3 Docker Desktop-->
+        <section class="panel">
+            <h2>Docker Desktop</h2>
+            <p>
+                Docker Desktop es una aplicación que proporciona una interfaz gráfica para
+                trabajar con contenedores desde Windows, macOS y Linux. Integra herramientas de
+                Docker y facilita tareas que también pueden realizarse mediante la terminal.
+            </p>
+            <p>Entre sus funciones principales se encuentran:</p>
+            <ul>
+                <li>Visualizar los contenedores, sus estados y los puertos publicados.</li>
+                <li>Consultar, descargar y administrar imágenes.</li>
+                <li>Revisar registros y detalles de los contenedores.</li>
+                <li>Trabajar con proyectos de Docker Compose.</li>
+                <li>Acceder a configuraciones y herramientas del entorno Docker.</li>
+            </ul>
+            <p>
+                Docker Desktop resulta útil para quienes comienzan a utilizar Docker o prefieren
+                administrar sus proyectos mediante una interfaz visual. No sustituye los
+                conceptos de Docker Engine ni la CLI; ofrece una forma integrada de acceder a
+                ellos.
+            </p>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/interfaz.jpg" alt="Interfaz gráfica de Docker Desktop">
+                
+                <figcaption>Interfaz gráfica de Docker Desktop</figcaption>
+            </figure>
+        </section>
+
+        <!--3.4 Kubernetes-->
+        <section class="oscuro">
+            <h2>Kubernetes</h2>
+            <p>
+                Kubernetes es una plataforma de código abierto que permite administrar
+                aplicaciones que se ejecutan en contenedores, especialmente cuando existen
+                muchos contenedores distribuidos en diferentes equipos. Su función principal es
+                coordinar su despliegue, escalado, disponibilidad y recuperación.
+            </p>
+            <p>Entre sus capacidades más importantes se encuentran:</p>
+            <ul>
+                <li><strong>Escalado:</strong> aumenta o reduce la cantidad de instancias según las necesidades.</li>
+                <li><strong>Autorreparación:</strong> puede reiniciar o reemplazar contenedores que dejan de funcionar correctamente.</li>
+                <li><strong>Balanceo de carga:</strong> distribuye el tráfico entre las instancias disponibles.</li>
+                <li><strong>Despliegues y reversiones:</strong> facilita publicar nuevas versiones y regresar a una versión anterior si es necesario.</li>
+            </ul>
+            <p>
+                <strong>Relación con Docker:</strong> Kubernetes no es un componente de Docker ni
+                depende exclusivamente de Docker Engine. Es una plataforma independiente que
+                administra cargas de trabajo en contenedores. Docker Desktop puede ofrecer un
+                clúster local de Kubernetes para desarrollo y pruebas.
+            </p>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/kubernetes.png" alt="Clúster de Kubernetes">
+                
+                <figcaption>Clúster de Kubernetes</figcaption>
+            </figure>
+        </section>
+
+        <!--3.5 Ventajas y limitaciones-->
+        <section>
+            <h2>Ventajas y limitaciones del uso de Docker</h2>
+
+            <div class="tabla">
+                <table>
+                    <caption>Balance del uso de Docker</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Ventajas</th>
+                            <th scope="col">Limitaciones y aspectos a considerar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Portabilidad:</strong> facilita ejecutar aplicaciones en distintos entornos compatibles.</td>
+                            <td>No elimina todas las diferencias entre sistemas operativos, arquitecturas o configuraciones.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Eficiencia:</strong> los contenedores suelen consumir menos recursos que máquinas virtuales completas.</td>
+                            <td>Los contenedores comparten el kernel del anfitrión y no equivalen al aislamiento de una máquina virtual.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Consistencia:</strong> ayuda a mantener dependencias y configuraciones similares entre desarrollo y producción.</td>
+                            <td>Las imágenes y configuraciones deben mantenerse actualizadas y gestionarse correctamente.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Automatización:</strong> permite integrar la construcción y el despliegue en flujos de trabajo.</td>
+                            <td>La seguridad, el almacenamiento, las redes y la supervisión requieren configuración y mantenimiento.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!--3.6 Casos de uso-->
+        <section class="panel">
+            <h2>Casos de uso</h2>
+            <p>
+                Docker se utiliza en diferentes etapas del desarrollo y operación de software.
+                Algunos ejemplos habituales son:
+            </p>
+
+            <div class="tabla">
+                <table>
+                    <caption>Casos de uso habituales de Docker</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Caso de uso</th>
+                            <th scope="col">Aplicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Entornos de desarrollo</td>
+                            <td>Cada integrante de un equipo puede trabajar con versiones y dependencias consistentes.</td>
+                        </tr>
+                        <tr>
+                            <td>Pruebas de software</td>
+                            <td>Se pueden crear entornos aislados para ejecutar pruebas sin alterar el sistema principal.</td>
+                        </tr>
+                        <tr>
+                            <td>Microservicios</td>
+                            <td>Cada componente de una aplicación puede ejecutarse y actualizarse en su propio contenedor.</td>
+                        </tr>
+                        <tr>
+                            <td>Integración y entrega continua (CI/CD)</td>
+                            <td>Las imágenes pueden construirse y probarse como parte de procesos automatizados.</td>
+                        </tr>
+                        <tr>
+                            <td>Despliegue en la nube</td>
+                            <td>Las aplicaciones empaquetadas en contenedores pueden desplegarse en infraestructuras compatibles.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                <a class="btn" href="index.html">Volver al inicio</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="pie-pag">
+        <div class="pie-presentacion">
+            <div class="pie-logos">
+                <span class="marca">
+                    <img src="assets/utp.png" alt="Logo Universidad Tecnológica de Panamá">
+                </span>
+                <span class="marca">
+                    <img src="assets/facu.png" alt="Logo Facultad de Ingeniería de Sistemas Computacionales">
+                </span>
+            </div>
+
+            <div class="pie-ficha">
+                <p>Universidad Tecnológica de Panamá</p>
+                <p>Facultad de Ingeniería de Sistemas Computacionales</p>
+                <p>Desarrollo y Gestión de Software</p>
+                <p>Parcial #3</p><br>
+                <p>Pertenece a:</p>
+                <p>Erick Castillo</p><br>
+                <p>Grupo:</p>
+                <p>1GS121</p><br>
+                <p>Fecha de entrega:</p>
+                <p>09 de noviembre de 2026</p><br>
+                <p>|| Semestre</p>
+            </div>
+
+            <p class="pie-nota">Docker y contenedores</p>
+        </div>
+    </footer>
+
+</body>
+</html>
