@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker y contenedores</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header class="header-bar">
+        <div class="logo">
+            <img src="assets/docker_icon.png" alt="Icono de Docker">
+            <h2>Docker y contenedores</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="activo">Home</a></li>
+                <li><a href="fundamentos.html">Fundamentos</a></li>
+                <li><a href="arquitectura.html">Arquitectura</a></li>
+                <li><a href="herramientas.html">Herramientas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="inicio">
+            <h1>Docker: revolucionando el desarrollo de software</h1>
+            <img src="assets/inico.png" alt="Imagen ilustrativa de Docker">
+            <p>
+                Docker es una plataforma tecnológica que ha transformado la manera en que se desarrollan, 
+                distribuyen y ejecutan las aplicaciones. Mediante el uso de contenedores, permite empaquetar 
+                programas junto con sus dependencias, facilitando su funcionamiento en diferentes entornos y 
+                simplificando los procesos de desarrollo y despliegue.
+            </p>
+            <p>"Construye una vez, ejecuta en cualquier entorno"</p>
+        </section>
+
+        <!--Sección 2-->
+        <section class="que-es-docker">
+            <h2>¿Qué es Docker?</h2>
+            <img src="assets/docker2.jpg" alt="Ilustración sobre Docker">
+            <p>
+                Docker es una plataforma de código abierto diseñada para crear, implementar y ejecutar 
+                aplicaciones mediante contenedores. Estos contenedores permiten reunir el código de una 
+                aplicación, sus bibliotecas y las configuraciones necesarias para que pueda funcionar de 
+                manera consistente en distintos sistemas. <br><br>
+
+                A diferencia de los métodos tradicionales de instalación, Docker proporciona entornos 
+                aislados que permiten ejecutar diferentes aplicaciones sin que sus dependencias interfieran 
+                entre sí.
+            </p>
+            <h3>características principales</h3>
+            <ul>
+                <li>Portabilidad: permite trasladar aplicaciones entre diferentes entornos</li>
+                <li>Aislamiento: mantiene separados los procesos y recursos de las aplicaciones</li>
+                <li>Ligereza: evita tener que ejecutar un sistema operativo completo por cada contenedor</li>
+                <li>Eficiencia: facilita la administración y distribución del software</li>
+            </ul>
+        </section>
+
+        <!--Sección 3-->
+        <section class="surge-docker">
+            <h2>¿Por qué surge Docker?</h2>
+            <p>
+                Antes de la popularización de los contenedores, uno de los problemas habituales 
+                del desarrollo de software era que una aplicación podía funcionar correctamente 
+                en el equipo del desarrollador, pero presentar errores al ejecutarse en otro sistema. <br><br>
+
+                Esto ocurría debido a diferencias entre versiones de bibliotecas, dependencias, 
+                configuraciones y sistemas operativos. Docker ayuda a solucionar este problema al 
+                permitir empaquetar las aplicaciones con sus dependencias en un entorno controlado.
+            </p>
+
+            <h3>Ejemplo práctico:</h3>
+            <p>
+                Imagina que desarrollas una aplicación en tu computadora utilizando Java y MySQL. 
+                Cuando intentas ejecutarla en otra computadora, pueden aparecer problemas porque 
+                no tiene las mismas versiones o configuraciones. <br><br>
+                Con Docker puedes empaquetar los componentes necesarios para que el entorno de 
+                ejecución sea consistente, reduciendo esos inconvenientes.
+            </p>
+        </section>
+
+        <!--Sección 4-->
+        <section class="historia-docker">
+            <h2>Historia y evolución de Docker</h2>
+            <p>
+                Docker fue presentado públicamente en marzo de 2013 durante la conferencia PyCon, 
+                por Solomon Hykes, como parte de la empresa dotCloud. Inicialmente surgió como un 
+                proyecto para facilitar la creación y administración de entornos de aplicaciones aislados. <br><br>
+
+                Con el tiempo, Docker evolucionó hasta convertirse en una de las tecnologías más 
+                reconocidas dentro del desarrollo de software y la infraestructura tecnológica.
+            </p>
+            <img src="assets/linea_tiempo.jpg" alt="Linea de tiempo de la evoución de Docker">
+        </section>
+
+        <!--Sección 5-->
+        <section class="importancia-docker">
+            <h2>Importancia de Docker en la actualidad</h2>
+            <p>
+                Docker tiene un papel importante en el desarrollo moderno porque permite simplificar 
+                tareas que tradicionalmente requerían configuraciones manuales y entornos diferentes. <br><br>
+
+                Su utilización resulta especialmente relevante en los siguientes ámbitos:
+            </p>
+
+            <section class="ambitos">
+                <h3>Principales ámbitos de aplicación</h3>
+
+                <div class="contenedor-ambitos">
+
+                    <article class="tarjeta">
+                        <h4>Desarrollo de software</h4>
+                        <p>
+                            Facilita la creación de entornos uniformes
+                            para desarrollar y probar aplicaciones.
+                        </p>
+                    </article>
+
+                    <article class="tarjeta">
+                        <h4>Computación en la nube</h4>
+                        <p>
+                            Permite distribuir y ejecutar aplicaciones
+                            en diferentes infraestructuras.
+                        </p>
+                    </article>
+
+                    <article class="tarjeta">
+                        <h4>DevOps y automatización</h4>
+                        <p>
+                            Facilita los procesos de integración,
+                            pruebas y despliegue de software.
+                        </p>
+                    </article>
+
+                    <article class="tarjeta">
+                        <h4>Microservicios</h4>
+                        <p>
+                            Permite ejecutar diferentes componentes
+                            de una aplicación en contenedores independientes.
+                        </p>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+        <!--Sección 6-->
+        <section class="explorar-docker">
+            <h2>Explora el universo Docker</h2>
+            <p>
+                Una breve descripción de las siguientes secciones:
+            </p>
+            <ul>
+                <li><a href="fundamentos.html">Fundamentos</a>: descubre los conceptos esenciales de los contenedores y sus componentes</li>
+                <li><a href="arquitectura.html">Arquitectura y funcionamiento</a>: comprende cómo trabaja Docker y cómo se ejecutan las aplicaciones</li>
+                <li><a href="herramientas.html">Herramientas y aplicaciones</a>: conoce las tecnologías relacionadas y sus usos en el desarrollo moderno</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="pie-pag">
+        <div class="pie-presentacion">
+            <div class="pie-logos">
+                <span class="marca">
+                    <img src="assets/utp.png" alt="Logo Universidad Tecnológica de Panamá">
+                </span>
+                <span class="marca">
+                    <img src="assets/facu.png" alt="Logo Facultad de Ingeniería de Sistemas Computacionales">
+                </span>
+            </div>
+
+            <div class="pie-ficha">
+                <p>Universidad Tecnológica de Panamá</p>
+                <p>Facultad de Ingeniería de Sistemas Computacionales</p>
+                <p>Desarrollo y Gestión de Software</p>
+                <p>Parcial #3</p><br>
+                <p>Pertenece a:</p>
+                <p>Erick Castillo</p><br>
+                <p>Grupo:</p>
+                <p>1GS121</p><br>
+                <p>Fecha de entrega:</p>
+                <p>09 de noviembre de 2026</p><br>
+                <p>|| Semestre</p>
+            </div>
+
+            <p class="pie-nota">Docker y contenedores</p>
+        </div>
+    </footer>
+
+</body>
+</html>
