@@ -1,0 +1,691 @@
+/* ============================================
+   Docker y contenedores - Hoja de estilos base
+   Reutilizable para todas las páginas del sitio
+   Paleta: Docker Blue #2496ED | Navy #0B2239
+   Unidades: rem / % / vw (sin px) - Responsive PC
+   ============================================ */
+
+/* ---------- 1. Variables ---------- */
+:root {
+    --azul: #2496ED;
+    --navy: #0B2239;
+    --navy-2: #172B45;
+    --azul-claro: #6CB6F5;
+    --fondo: #F4F8FC;
+    --texto: #1B2B3E;
+    --borde: #DCE6F0;
+    --blanco: #FFFFFF;
+
+    --radio: 0.75rem;
+    --sombra: 0 0.25rem 0.75rem rgba(11, 34, 57, 0.1);
+    --max-ancho: 72rem;
+}
+
+/* ---------- 2. Reset y base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--texto);
+    background-color: var(--blanco);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+a {
+    color: var(--azul);
+}
+
+/* ---------- 3. Encabezado y navegación ---------- */
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem 3rem;
+    background-color: var(--navy-2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.logo img {
+    width: 2.75rem;
+    height: 2.75rem;
+    object-fit: contain;
+}
+
+.logo h2 {
+    color: var(--blanco);
+    font-size: 1.3rem;
+    white-space: nowrap;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--blanco);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--azul-claro);
+}
+
+nav a.activo {
+    color: var(--azul-claro);
+    border-bottom: 0.15rem solid var(--azul-claro);
+    padding-bottom: 0.25rem;
+}
+
+/* ---------- 4. Estructura de páginas ---------- */
+main {
+    max-width: var(--max-ancho);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+main > section {
+    padding: 3rem 0;
+}
+
+/* ---------- 5. Tipografía ---------- */
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.25;
+    color: var(--navy);
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 0.25rem solid var(--azul);
+}
+
+h3 {
+    font-size: 1.35rem;
+    color: var(--navy-2);
+    margin: 2rem 0 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    max-width: 60rem;
+}
+
+/* ---------- 6. Listas ---------- */
+ul,
+ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    max-width: 60rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+li::marker {
+    color: var(--azul);
+    font-weight: 700;
+}
+
+/* ---------- 7. Componentes reutilizables ---------- */
+
+/* Panel de fondo claro (secciones alternas) */
+.panel {
+    background-color: var(--fondo);
+    border: 0.0625rem solid var(--borde);
+    border-radius: var(--radio);
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+/* Hero / portada */
+.hero {
+    text-align: center;
+    background-color: var(--fondo);
+    border: 0.0625rem solid var(--borde);
+    border-radius: var(--radio);
+    padding: 3.5rem 3rem;
+    margin-top: 2.5rem;
+}
+
+.hero h1 {
+    max-width: 50rem;
+    margin: 0 auto 1.5rem;
+}
+
+.hero img {
+    margin: 0 auto 1.5rem;
+    max-width: 38rem;
+    border-radius: var(--radio);
+}
+
+.hero p {
+    margin: 0 auto 1rem;
+    max-width: 48rem;
+}
+
+/* Cita destacada */
+.destacado {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--navy-2);
+    border-left: 0.25rem solid var(--azul);
+    background-color: var(--fondo);
+    padding: 1rem 1.5rem;
+    border-radius: 0 var(--radio) var(--radio) 0;
+    margin: 1.5rem 0;
+    max-width: 46rem;
+}
+
+/* Tarjetas */
+.grid-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.tarjeta {
+    background: var(--blanco);
+    border: 0.0625rem solid var(--borde);
+    border-top: 0.25rem solid var(--azul);
+    border-radius: var(--radio);
+    padding: 1.5rem;
+    box-shadow: var(--sombra);
+}
+
+.tarjeta h4 {
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta p {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Bloque oscuro (secciones destacadas) */
+.oscuro {
+    background-color: var(--navy-2);
+    border-radius: var(--radio);
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+.oscuro h2,
+.oscuro h3,
+.oscuro h4 {
+    color: var(--blanco);
+    border-left-color: var(--azul-claro);
+}
+
+.oscuro p,
+.oscuro li {
+    color: #D6E4F5;
+}
+
+.oscuro li::marker {
+    color: var(--azul-claro);
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    background-color: var(--azul);
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.65rem 1.75rem;
+    border-radius: var(--radio);
+}
+
+.btn:hover {
+    background-color: #1A7FD4;
+    color: var(--blanco);
+}
+
+/* Espacio reservado para imágenes: mientras no haya imagen se muestra
+   un recuadro punteado. Al colocarla, el figure adopta el mismo ancho
+   (60rem) y el mismo marco blanco que las imágenes del index. */
+.espacio-imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 60rem;
+    min-height: 11rem;
+    margin: 1.5rem auto;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background-color: var(--fondo);
+    border: 0.125rem dashed var(--azul-claro);
+    border-radius: var(--radio);
+}
+
+.espacio-imagen figcaption {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy-2);
+}
+
+/* Imagen colocada: marco blanco con sombra, igual que en el index */
+.espacio-imagen:has(img) {
+    gap: 0.6rem;
+    min-height: 0;
+    padding: 0.6rem;
+    background-color: var(--blanco);
+    border: 0.0625rem solid var(--borde);
+    box-shadow: var(--sombra);
+}
+
+/* Imagen fluida: ocupa todo el ancho disponible y se reduce
+   proporcionalmente en pantallas pequeñas, sin recortes ni deformación */
+.espacio-imagen img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: calc(var(--radio) - 0.2rem);
+}
+
+/* ---------- 8. Compatibilidad con index.html ----------
+   Las páginas nuevas deben usar las clases genéricas
+   de la sección 7; estas reglas solo conectan el
+   index existente con el sistema reutilizable.       */
+
+.inicio {
+    text-align: center;
+    background-color: var(--fondo);
+    border: 0.0625rem solid var(--borde);
+    border-radius: var(--radio);
+    padding: 3.5rem 3rem;
+    margin-top: 2.5rem;
+}
+
+.inicio h1 {
+    max-width: 50rem;
+    margin: 0 auto 1.5rem;
+}
+
+.inicio img {
+    margin: 0 auto 1.5rem;
+    max-width: 38rem;
+    border-radius: var(--radio);
+}
+
+.inicio p {
+    margin: 0 auto 1rem;
+    max-width: 48rem;
+}
+
+.inicio p:last-child {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--navy-2);
+    border-left: 0.25rem solid var(--azul);
+    background: var(--blanco);
+    padding: 1rem 1.5rem;
+    border-radius: 0 var(--radio) var(--radio) 0;
+    display: inline-block;
+    text-align: left;
+    margin-top: 1.5rem;
+}
+
+.que-es-docker,
+.historia-docker {
+    background-color: var(--fondo);
+    border: 0.0625rem solid var(--borde);
+    border-radius: var(--radio);
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+.surge-docker,
+.importancia-docker,
+.explorar-docker {
+    margin-top: 2.5rem;
+}
+
+.que-es-docker img,
+.historia-docker img {
+    background: var(--blanco);
+    padding: 0.6rem;
+    border: 0.0625rem solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    margin: 1.5rem auto;
+    max-width: 46rem;
+}
+
+.historia-docker img {
+    max-width: 60rem;
+}
+
+.ambitos {
+    background-color: var(--navy-2);
+    border-radius: var(--radio);
+    padding: 2.5rem;
+    margin-top: 2rem;
+}
+
+.ambitos h3 {
+    color: var(--blanco);
+    margin-top: 0;
+    text-align: center;
+    border: none;
+    padding: 0;
+}
+
+.contenedor-ambitos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.explorar-docker {
+    background-color: var(--navy-2);
+    border-radius: var(--radio);
+    padding: 2.5rem;
+}
+
+.explorar-docker h2 {
+    color: var(--blanco);
+    border-left-color: var(--azul-claro);
+}
+
+.explorar-docker p,
+.explorar-docker li {
+    color: #D6E4F5;
+}
+
+.explorar-docker li::marker {
+    color: var(--azul-claro);
+}
+
+/* ---------- 9. Tablas informativas ---------- */
+.tabla {
+    width: 100%;
+    max-width: 60rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    background-color: var(--blanco);
+    border: 0.0625rem solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.975rem;
+}
+
+caption {
+    caption-side: top;
+    text-align: left;
+    font-weight: 600;
+    color: var(--navy-2);
+    padding: 0.9rem 1.1rem;
+    background-color: var(--fondo);
+    border-bottom: 0.0625rem solid var(--borde);
+}
+
+th {
+    background-color: var(--navy-2);
+    color: var(--blanco);
+    text-align: left;
+    font-weight: 600;
+    padding: 0.85rem 1.1rem;
+}
+
+td {
+    padding: 0.8rem 1.1rem;
+    border-bottom: 0.0625rem solid var(--borde);
+    vertical-align: top;
+    color: var(--texto);
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--fondo);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody td:first-child {
+    font-weight: 600;
+    color: var(--navy-2);
+}
+
+/* ---------- 10. Código y comandos ---------- */
+code {
+    font-family: Consolas, "Courier New", monospace;
+    background-color: var(--fondo);
+    color: var(--navy-2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.35rem;
+    font-size: 0.95rem;
+}
+
+.oscuro code {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--azul-claro);
+}
+
+/* Las tablas conservan fondo claro, también dentro de bloques oscuros */
+.oscuro .tabla code {
+    background-color: var(--fondo);
+    color: var(--navy-2);
+}
+
+/* ---------- 11. Pie de página ----------
+   Base del footer + plantilla de presentación:
+   utp.png a la izquierda, facu.png a la derecha
+   y datos académicos editables debajo.              */
+footer {
+    background-color: var(--navy);
+    margin-top: 3rem;
+    padding: 2rem 3rem;
+    text-align: center;
+    color: var(--azul-claro);
+    font-size: 0.95rem;
+}
+.pie-presentacion {
+    max-width: 46rem;
+    margin: 0 auto;
+}
+
+.pie-logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.pie-logos .marca {
+    display: inline-flex;
+    background-color: var(--blanco);
+    border-radius: 50%;
+    padding: 0.5rem;
+    box-shadow: var(--sombra);
+}
+
+.pie-logos img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+}
+
+.pie-ficha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--navy-2);
+    border: 0.0625rem solid rgba(108, 182, 245, 0.35);
+    border-radius: var(--radio);
+    padding: 1.75rem 2rem;
+    text-align: center;
+}
+
+.pie-ficha p {
+    margin: 0;
+    max-width: none;
+    color: #D6E4F5;
+    font-size: 1rem;
+}
+
+.pie-ficha span {
+    color: var(--azul-claro);
+    font-weight: 600;
+}
+
+.pie-nota {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--azul-claro);
+}
+
+/* Enlaces de la sección de exploración */
+.explorar-docker a {
+    color: var(--azul-claro);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.explorar-docker a:hover {
+    color: var(--blanco);
+    text-decoration: underline;
+}
+
+/* ============================================
+   Responsive PC
+   ============================================ */
+
+/* Laptops */
+@media (max-width: 75rem) {
+    .header-bar {
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+    }
+
+    .logo h2 {
+        font-size: 1.15rem;
+    }
+
+    nav ul {
+        gap: 1.2rem;
+    }
+
+    main {
+        padding: 0 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.1rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .hero,
+    .inicio,
+    .panel,
+    .oscuro,
+    .que-es-docker,
+    .historia-docker,
+    .ambitos,
+    .explorar-docker {
+        padding: 2rem;
+    }
+
+    .grid-tarjetas,
+    .contenedor-ambitos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Imágenes más compactas en laptop */
+    .inicio img,
+    .hero img {
+        max-width: 32rem;
+    }
+
+    .que-es-docker img,
+    .historia-docker img,
+    .espacio-imagen {
+        max-width: 100%;
+    }
+
+    /* Pie de página institucional */
+    .pie-ficha {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .pie-logos img {
+        width: 4.25rem;
+        height: 4.25rem;
+    }
+
+    .pie-logos .marca {
+        padding: 0.4rem;
+    }
+}
+
+/* Escritorio grande */
+@media (min-width: 90rem) {
+    h1 {
+        font-size: 2.75rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    .grid-tarjetas,
+    .contenedor-ambitos {
+        gap: 2rem;
+    }
+}
