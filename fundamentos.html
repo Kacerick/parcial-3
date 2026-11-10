@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de Docker</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header class="header-bar">
+        <div class="logo">
+            <img src="assets/docker_icon.png" alt="Icono de Docker">
+            <h2>Docker y contenedores</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="fundamentos.html" class="activo">Fundamentos</a></li>
+                <li><a href="arquitectura.html">Arquitectura</a></li>
+                <li><a href="herramientas.html">Herramientas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!--Portada-->
+        <section class="hero">
+            <h1>Fundamentos de Docker</h1>
+            <p>
+                Docker es una plataforma que permite crear, distribuir y ejecutar aplicaciones
+                mediante contenedores. Para comprender su funcionamiento, es importante conocer
+                los elementos que intervienen en la creación de imágenes, la ejecución de
+                contenedores, el almacenamiento de datos y la comunicación entre servicios.
+            </p>
+        </section>
+
+        <!--1.1 Contenedores-->
+        <section class="panel">
+            <h2>Contenedores</h2>
+            <p>
+                Los contenedores son entornos aislados que permiten ejecutar aplicaciones junto
+                con los elementos necesarios para su funcionamiento, como bibliotecas,
+                dependencias y configuraciones. Su objetivo es que una aplicación se comporte de
+                manera consistente en diferentes equipos y entornos.
+            </p>
+            <p>
+                A diferencia de las máquinas virtuales, los contenedores comparten el kernel del
+                sistema operativo anfitrión. Esto permite que generalmente utilicen menos
+                recursos y se inicien con mayor rapidez.
+            </p>
+
+            <h3>Características principales</h3>
+            <ul>
+                <li><strong>Aislamiento:</strong> cada contenedor ejecuta sus procesos de manera independiente.</li>
+                <li><strong>Portabilidad:</strong> pueden ejecutarse en diferentes entornos compatibles con Docker.</li>
+                <li><strong>Ligereza:</strong> suelen consumir menos recursos que una máquina virtual completa.</li>
+                <li><strong>Escalabilidad:</strong> permiten crear varias instancias de una aplicación según las necesidades.</li>
+            </ul>
+
+            <p class="destacado">
+                Ejemplo: una aplicación desarrollada con Java y conectada a MySQL puede ejecutarse
+                utilizando contenedores, manteniendo sus dependencias y configuraciones sin
+                instalarlas manualmente en cada equipo.
+            </p>
+
+            <figure class="espacio-imagen">
+                <img src="assets/docker_containers.jpg" alt="Contenedor aislado con sus dependencias">
+                
+                <figcaption>Contenedor aislado y sus dependencias</figcaption>
+            </figure>
+        </section>
+
+        <!--1.2 Imágenes-->
+        <section>
+            <h2>Imágenes de Docker</h2>
+            <p>
+                Una imagen de Docker es una plantilla que contiene los archivos, bibliotecas,
+                dependencias y configuraciones necesarias para crear un contenedor. Es la base a
+                partir de la cual se ejecuta una aplicación.
+            </p>
+            <p>
+                Las imágenes están organizadas en capas. Cada capa incorpora archivos o
+                modificaciones realizadas durante su construcción. Esta estructura permite
+                reutilizar capas existentes, reducir descargas y optimizar el almacenamiento.
+            </p>
+
+            <h3>Características principales</h3>
+            <ul>
+                <li><strong>Reutilización:</strong> una misma imagen puede utilizarse para crear múltiples contenedores.</li>
+                <li><strong>Inmutabilidad:</strong> una imagen no se modifica directamente; los cambios producen una nueva imagen.</li>
+                <li><strong>Versionamiento:</strong> pueden existir diferentes versiones de una misma imagen.</li>
+                <li><strong>Eficiencia:</strong> las capas compartidas evitan descargar o almacenar repetidamente los mismos elementos.</li>
+            </ul>
+
+            <p class="destacado">
+                Ejemplo: una imagen de MySQL permite crear contenedores que ejecuten un servidor
+                de base de datos sin instalar MySQL manualmente en cada equipo.
+            </p>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/docker_image.png" alt="Capas de una imagen Docker">
+                
+                <figcaption>Capas de una imagen Docker</figcaption>
+            </figure>
+        </section>
+
+        <!--1.3 Dockerfile y Docker Hub-->
+        <section class="panel">
+            <h2>Dockerfile y Docker Hub</h2>
+            <p>
+                Dockerfile y Docker Hub cumplen funciones diferentes pero complementarias: uno
+                permite definir cómo construir una imagen y el otro facilita almacenar y
+                compartir imágenes.
+            </p>
+
+            <h3>Dockerfile</h3>
+            <p>
+                Es un archivo de texto que contiene instrucciones utilizadas para construir una
+                imagen. En él se especifican la imagen base, los archivos que se incorporarán,
+                las dependencias que deben instalarse y el comando predeterminado para ejecutar
+                la aplicación.
+            </p>
+
+            <div class="tabla">
+                <table>
+                    <caption>Instrucciones más utilizadas en un Dockerfile</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Instrucción</th>
+                            <th scope="col">Función</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>FROM</code></td>
+                            <td>Define la imagen base sobre la que se construirá la nueva imagen.</td>
+                        </tr>
+                        <tr>
+                            <td><code>WORKDIR</code></td>
+                            <td>Establece el directorio de trabajo dentro de la imagen.</td>
+                        </tr>
+                        <tr>
+                            <td><code>COPY</code></td>
+                            <td>Copia archivos o directorios al sistema de archivos de la imagen.</td>
+                        </tr>
+                        <tr>
+                            <td><code>RUN</code></td>
+                            <td>Ejecuta comandos durante el proceso de construcción.</td>
+                        </tr>
+                        <tr>
+                            <td><code>EXPOSE</code></td>
+                            <td>Documenta el puerto en el que la aplicación espera recibir conexiones.</td>
+                        </tr>
+                        <tr>
+                            <td><code>CMD</code></td>
+                            <td>Define el comando predeterminado al iniciar un contenedor.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Docker Hub</h3>
+            <p>
+                Es un servicio de registro de imágenes que permite buscar, descargar, almacenar
+                y compartir imágenes de Docker. Los desarrolladores pueden utilizar imágenes
+                oficiales o publicar imágenes propias para que otros equipos las descarguen y
+                utilicen.
+            </p>
+
+            <p class="destacado">
+                Ejemplo: un desarrollador puede descargar una imagen oficial de MySQL desde
+                Docker Hub y utilizarla como base para crear un contenedor con su base de datos.
+            </p>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/dockerfile.png" alt="Ejemplo de Dockerfile">
+                
+                <figcaption>Ejemplo de Dockerfile</figcaption>
+            </figure>
+        </section>
+
+        <!--1.4 Volúmenes y redes-->
+        <section>
+            <h2>Volúmenes y redes</h2>
+            <p>
+                Los volúmenes y las redes permiten administrar dos aspectos esenciales de las
+                aplicaciones en contenedores: la conservación de información y la comunicación
+                entre servicios.
+            </p>
+
+            <h3>Volúmenes (Volumes)</h3>
+            <p>
+                Son mecanismos de almacenamiento que permiten conservar datos fuera del ciclo de
+                vida de un contenedor. De esta manera, la información puede mantenerse aunque el
+                contenedor se elimine o se reemplace. Son especialmente útiles para bases de
+                datos, archivos de usuarios y registros.
+            </p>
+
+            <h3>Redes (Networks)</h3>
+            <p>
+                Permiten establecer conexiones entre contenedores y otros servicios. Gracias a
+                ellas, diferentes componentes de una aplicación pueden comunicarse sin tener que
+                ejecutarse dentro del mismo contenedor.
+            </p>
+
+            <div class="tabla">
+                <table>
+                    <caption>Función principal de cada elemento</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Elemento</th>
+                            <th scope="col">Función principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Volúmenes</td>
+                            <td>Conservar y administrar los datos utilizados por los contenedores.</td>
+                        </tr>
+                        <tr>
+                            <td>Redes</td>
+                            <td>Permitir la comunicación entre contenedores y servicios.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="destacado">
+                Ejemplo: una aplicación puede tener un contenedor para el backend y otro para
+                MySQL. Ambos pueden comunicarse mediante una red de Docker, mientras que un
+                volumen conserva los datos de la base de datos.
+            </p>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/redes-en-docker.png" alt="redes de Docker">
+                
+                <figcaption>Redes de Docker</figcaption>
+            </figure>
+        </section>
+
+        <!--1.5 Contenedores vs máquinas virtuales-->
+        <section class="panel">
+            <h2>Contenedores vs máquinas virtuales</h2>
+            <p>
+                Los contenedores y las máquinas virtuales permiten ejecutar aplicaciones en
+                entornos aislados, pero utilizan mecanismos diferentes. Las máquinas virtuales
+                funcionan mediante un hipervisor y cada una ejecuta su propio sistema operativo.
+                Los contenedores comparten el kernel del sistema anfitrión y aíslan los procesos
+                y recursos de cada aplicación.
+            </p>
+
+            <div class="tabla">
+                <table>
+                    <caption>Comparación entre contenedores y máquinas virtuales</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Característica</th>
+                            <th scope="col">Contenedores</th>
+                            <th scope="col">Máquinas virtuales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sistema operativo</td>
+                            <td>Comparten el kernel anfitrión.</td>
+                            <td>Cada máquina virtual tiene su propio sistema operativo.</td>
+                        </tr>
+                        <tr>
+                            <td>Consumo de recursos</td>
+                            <td>Generalmente menor.</td>
+                            <td>Generalmente mayor.</td>
+                        </tr>
+                        <tr>
+                            <td>Inicio</td>
+                            <td>Suelen iniciar rápidamente.</td>
+                            <td>Generalmente requieren más tiempo.</td>
+                        </tr>
+                        <tr>
+                            <td>Aislamiento</td>
+                            <td>Aíslan procesos y recursos.</td>
+                            <td>Aislamiento a nivel de máquina virtual.</td>
+                        </tr>
+                        <tr>
+                            <td>Uso habitual</td>
+                            <td>Aplicaciones y microservicios.</td>
+                            <td>Sistemas operativos y entornos completos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>¿Cuándo utilizar cada uno?</h3>
+            <ul>
+                <li><strong>Contenedores:</strong> cuando se necesita desplegar aplicaciones rápidamente, aprovechar recursos y mantener entornos consistentes.</li>
+                <li><strong>Máquinas virtuales:</strong> cuando se requiere ejecutar sistemas operativos diferentes o disponer de un entorno de máquina completo.</li>
+            </ul>
+
+            <figure class="espacio-imagen">
+                
+                <img src="assets/contenedor-mv.jpg" alt="Comparación entre contenedores y máquinas virtuales">
+                
+                <figcaption>Contenedores vs. máquinas virtuales</figcaption>
+            </figure>
+
+            <p>
+                <a class="btn" href="arquitectura.html">Continuar: Arquitectura de Docker</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="pie-pag">
+        <div class="pie-presentacion">
+            <div class="pie-logos">
+                <span class="marca">
+                    <img src="assets/utp.png" alt="Logo Universidad Tecnológica de Panamá">
+                </span>
+                <span class="marca">
+                    <img src="assets/facu.png" alt="Logo Facultad de Ingeniería de Sistemas Computacionales">
+                </span>
+            </div>
+
+            <div class="pie-ficha">
+                <p>Universidad Tecnológica de Panamá</p>
+                <p>Facultad de Ingeniería de Sistemas Computacionales</p>
+                <p>Desarrollo y Gestión de Software</p>
+                <p>Parcial #3</p><br>
+                <p>Pertenece a:</p>
+                <p>Erick Castillo</p><br>
+                <p>Grupo:</p>
+                <p>1GS121</p><br>
+                <p>Fecha de entrega:</p>
+                <p>09 de noviembre de 2026</p><br>
+                <p>|| Semestre</p>
+            </div>
+
+            <p class="pie-nota">Docker y contenedores</p>
+        </div>
+    </footer>
+
+</body>
+</html>
